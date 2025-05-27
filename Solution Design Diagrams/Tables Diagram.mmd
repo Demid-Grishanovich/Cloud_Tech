@@ -1,0 +1,43 @@
+erDiagram
+
+  USERS ||--o{ BOOKINGS : makes
+  MOVIES ||--o{ BOOKINGS : includes
+  THEATERS ||--o{ BOOKINGS : heldIn
+  BOOKINGS ||--|{ PAYMENTS : generates
+
+  USERS {
+    int id PK
+    string full_name
+    string email
+    string phone
+  }
+
+  MOVIES {
+    int id PK
+    string title
+    int duration
+    string genre
+  }
+
+  THEATERS {
+    int id PK
+    string name
+    string location
+  }
+
+  BOOKINGS {
+    int id PK
+    int user_id FK
+    int movie_id FK
+    int theater_id FK
+    string seat_number
+    datetime time
+    string status
+  }
+
+  PAYMENTS {
+    int id PK
+    int booking_id FK
+    decimal amount
+    string status
+  }

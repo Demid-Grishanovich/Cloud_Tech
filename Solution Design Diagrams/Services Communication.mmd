@@ -1,0 +1,16 @@
+graph LR
+  User --> API_Gateway
+
+  API_Gateway --> MoviesService
+  API_Gateway --> TheatersService
+  API_Gateway --> BookingsService
+  API_Gateway --> PaymentsService
+
+  BookingsService -->|calls| PaymentsService
+  BookingsService -->|calls| MoviesService
+  BookingsService -->|calls| TheatersService
+
+  BookingsService -->|writes/reads| BookingDB
+  MoviesService -->|reads| MoviesDB
+  TheatersService -->|reads| TheatersDB
+  PaymentsService -->|writes| PaymentsDB
